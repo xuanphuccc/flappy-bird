@@ -30,7 +30,6 @@ console.log('pipe width = ' + pipeWidth);
 console.log('pipe height = ' + pipeHeight);
 
 
-
 function flappyBird () {
     
     var gamePlay = true;
@@ -92,26 +91,7 @@ function flappyBird () {
     }
     flapping();
 
-
-    /* // Floatting:
-    function floating (isStop = 0) {
-
-        var status = 0;
-        if (isStop == 0) {
-            setInterval(floatUpDown, 300);
-            function floatUpDown () {
-                if (status == 0) {
-                    bird.style.top = '206px';
-                    status = 1;
-                } else {
-                    bird.style.top = '214px';
-                    status = 0;
-                }
-            }
-        } else return;
-    }
-    // floating(); */
-
+    // Floatting:
 
     var str = bird.style.top;
     var pos = str.slice(0, 3) * 1;
@@ -165,7 +145,6 @@ function flappyBird () {
     }
 
 
-
     var str = pipes.style.left;
     var pipesPos = str.slice(0, 3) * 1;
     var pos3 = pipesPos;
@@ -197,25 +176,19 @@ function flappyBird () {
 
 
     function gameOver () {
+
         if (pos > 380) {
             gamePlay = false;
             console.log('GAME OVER!!!');
-            // return;
         }
 
-        // console.log("POS 3: " + pos3);
         if (((posBirdLeft + birdWidth) >= pos3) && ((posBirdLeft + birdWidth) <= (pos3 +pipeWidth))) {
             // pipe_X <= bird_X <= (pipe_X + pipe_Width)
-
-            /* console.log('test Random: ' + pipeLog[random]);
-            console.log('test pos: ', pos);
-            console.log('test pipe: ' + (pipeLog[random] + pipeHeight)); */
 
             if (pos <= (pipeLog[random] + pipeHeight) || (pos + birdHeight) >= (pipeLog[random] + pipeHeight + 100)) {
             // bird_Y <= top_Pipe                     || bird_Y  >= bottom_Pipe
                 gamePlay = false;
                 console.log('GAME OVER222!!!');
-                // return;
             }
             
             
@@ -225,7 +198,6 @@ function flappyBird () {
             droppingFast();
             return;
         }
-
         requestAnimationFrame(gameOver);
     }
     gameOver();
@@ -248,25 +220,4 @@ function flappyBird () {
         }
     }
 }
-
 flappyBird();
-
-
-// Floatting:
-function floating (isStop = 0) {
-
-    var status = 0;
-    if (isStop == 0) {
-        setInterval(floatUpDown, 300);
-        function floatUpDown () {
-            if (status == 0) {
-                bird.style.top = '206px';
-                status = 1;
-            } else {
-                bird.style.top = '214px';
-                status = 0;
-            }
-        }
-    } else return;
-}
-// floating();
